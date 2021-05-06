@@ -8,7 +8,7 @@
 my_list = []
 res = True
 while res:
-    value = input("Введите элемент('f', что бы закончить ввод): ")
+    value = input("Введите элемент (или 'f', что бы закончить ввод): ")
     if value == 'f':
         break
     my_list.append(value)

@@ -11,9 +11,8 @@ def int_func(s):
                     s[1:len(s)]])
 
 
-value = input("Введите слова, разделенные пробелом: ")
-str_buf = []
-for s in value.split():
-    str_buf.append(int_func(s))
-print(' '.join(str_buf))
+value_list = input("Введите слова, разделенные пробелом: ").split()
+new = list(map(int_func, value_list))
+print(new)
+
 

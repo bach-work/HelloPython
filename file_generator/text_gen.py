@@ -1,5 +1,5 @@
 import string
-from random import choice, randint
+from random import choice, randint, random
 
 
 def random_word(max_length: int) -> str:
@@ -56,6 +56,17 @@ def gen_file(filename: str, row_count: int, max_column_count: int):
         print('Ошибка!', e)
         return False
 
+
+def gen_salary_file(filename: str, workers: list):
+    """Генерирует файл со списком работников и их зп"""
+    try:
+        with open(filename, 'w',  encoding='utf-8') as file:
+            for worker in workers:
+                file.write(f'{worker} {random()*40000:.2f} \n')
+        return True
+    except BaseException as e:
+        print('Ошибка генерации файла!', e)
+        return False
 
 # if __name__ == '__main__':
     # print(random_word('q'))

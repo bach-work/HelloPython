@@ -72,13 +72,27 @@ def gen_salary_file(filename: str, workers: list):
 def gen_numbers_file(filename: str, count: int, sep: str = ' '):
     """Генерирует файл с числами через разделитель"""
     try:
-        list = [str(randint(-1000, 1000)) for _ in range(count)]
+        num_list = [str(randint(-1000, 1000)) for _ in range(count)]
         with open(filename, 'w', encoding='utf-8') as f:
-            f.write(sep.join(list))
+            f.write(sep.join(num_list))
         return True
     except BaseException as e:
         print('Ошибка генерации файла!', e)
         return False
+
+
+def gen_firm_list_file(filename: str, count: int):
+    """Генерирует файл со списком фирм, выручкой и издержками каждой """
+    forms = ['ООО', 'ЗАО', 'ИП']
+    try:
+        with open(filename, 'w', encoding='utf-8') as f:
+            for i in range(count):
+                f.write(f'firm_{i+1} {choice(forms)} {randint(0, 10000)} {randint(0, 5000)} \n')
+        return True
+    except BaseException as e:
+        print('Ошибка генерации файла!', e)
+        return False
+
 
 # if __name__ == '__main__':
 # print(random_word('q'))

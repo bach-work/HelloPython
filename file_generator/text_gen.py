@@ -13,7 +13,7 @@ def random_word(max_length: int) -> str:
         print('Ошибка!', e)
 
 
-def random_string(max_words_count: int, max_word_length: int=6) -> str:
+def random_string(max_words_count: int, max_word_length: int = 6) -> str:
     """
     Возвращает строку, состоящую из случайных слов.
     Количество слов не больше чем max_words_count
@@ -60,17 +60,29 @@ def gen_file(filename: str, row_count: int, max_column_count: int):
 def gen_salary_file(filename: str, workers: list):
     """Генерирует файл со списком работников и их зп"""
     try:
-        with open(filename, 'w',  encoding='utf-8') as file:
+        with open(filename, 'w', encoding='utf-8') as file:
             for worker in workers:
-                file.write(f'{worker} {random()*40000:.2f} \n')
+                file.write(f'{worker} {random() * 40000:.2f} \n')
+        return True
+    except BaseException as e:
+        print('Ошибка генерации файла!', e)
+        return False
+
+
+def gen_numbers_file(filename: str, count: int, sep: str = ' '):
+    """Генерирует файл с числами через разделитель"""
+    try:
+        list = [str(randint(-1000, 1000)) for _ in range(count)]
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(sep.join(list))
         return True
     except BaseException as e:
         print('Ошибка генерации файла!', e)
         return False
 
 # if __name__ == '__main__':
-    # print(random_word('q'))
-    # print( random_string(15) )
-    # g = random_generator(7, 10)
-    # for el in g:
-    #     print(el)
+# print(random_word('q'))
+# print( random_string(15) )
+# g = random_generator(7, 10)
+# for el in g:
+#     print(el)

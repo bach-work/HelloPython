@@ -25,7 +25,7 @@ class Matrix:
 
 
 def genMatrix(row_count: int, column_count: int) -> Matrix:
-    """Формирует случайную матрицу разсера [row_count, column_count]"""
+    """Формирует случайную матрицу размера [row_count, column_count]"""
     try:
         return Matrix([[randint(0, 100) for _ in range(column_count)] for _ in range(row_count)])
     except BaseException as e:
